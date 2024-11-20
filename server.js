@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const errorMiddleware = require('./middleware/errorMiddleware')
 const userRoute = require('./routes/userRoute')
+const productRoute = require('./routes/productRoute')
 var cors = require('cors')
 
 const app = express()
@@ -24,6 +25,7 @@ var corsOptions = {
   app.use(morgan("common"))
 
   app.use('/api/user', userRoute )
+  app.use('/api/product', productRoute )
 
 
   app.get('/', (req,res)=>{
