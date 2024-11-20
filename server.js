@@ -4,6 +4,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const errorMiddleware = require('./middleware/errorMiddleware')
+const userRoute = require('./routes/userRoute')
 var cors = require('cors')
 
 const app = express()
@@ -22,12 +23,15 @@ var corsOptions = {
   app.use(express.json())
   app.use(morgan("common"))
 
+  app.use('/api/user', userRoute )
+
+
   app.get('/', (req,res)=>{
     res.send('Hello NODE API')
 })
 
 app.get('/block', (req,res)=>{
-    res.send('Hello BLOCK my name is lalala')
+    res.send('Hello BLOCK my name is mimi')
 })
 
 app.use(errorMiddleware)
