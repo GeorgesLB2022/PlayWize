@@ -7,6 +7,7 @@ const errorMiddleware = require('./middleware/errorMiddleware')
 const userRoute = require('./routes/userRoute')
 const productRoute = require('./routes/productRoute')
 const categoryRoute = require('./routes/categoryRoute')
+const cartRoute = require('./routes/cartRoute')
 var cors = require('cors')
 
 const app = express()
@@ -28,6 +29,7 @@ var corsOptions = {
   app.use('/api/user', userRoute )
   app.use('/api/product', productRoute )
   app.use('/api/category', categoryRoute )
+  app.use('/api/cart', cartRoute )
 
   app.get('/', (req,res)=>{
     res.send('Hello NODE API')

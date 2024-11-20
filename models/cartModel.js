@@ -5,12 +5,15 @@ const CartSchema = new mongoose.Schema({
   items: [
     {
       product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-      quantity: { type: Number, required: true }
+      unitPrice: { type: Number, required: true }, // Unit price of the product
+      quantity: { type: Number, required: true },
+      itemDiscount: { type: Number, default: 0 }, // Discount on this specific item
     }
   ],
-  totalPrice: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date }
-});
+  cartDiscount: { type: Number, default: 0 }, // Discount on the entire cart
+  totalPrice: { type: Number, default: 0 }, // Final price after discounts
+},
+{ timestamps: true });
+
 
 module.exports = mongoose.model('Cart', CartSchema);
